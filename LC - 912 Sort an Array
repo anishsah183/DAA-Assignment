@@ -1,0 +1,56 @@
+class Solution {
+    public void MergeSort(int arr[], int si, int ei) {
+        while(si >= ei){
+            return;
+                }
+        int mid = si + (ei - si) / 2;
+
+        MergeSort(arr, si, mid);
+        MergeSort(arr, mid + 1, ei);
+        merge(arr,si, mid, ei);
+    
+}
+
+public void merge(int arr[], int si, int mid, int ei){
+    int result[] = new int[ei - si + 1];
+    int i = si;
+    int j = mid + 1;
+    int k = 0;
+    while(i <= mid && j <= ei){
+        if(arr[i] < arr[j]){
+            result[k] = arr[i];
+            i++;
+        }else{
+            result[k] = arr[j]; 
+            j++;
+        }
+        k++;
+    }
+    while(i <= mid){
+        result[k] = arr[i];
+        i++;
+         k++;
+    }
+
+    while(j <= ei){
+        result[k] = arr[j];
+        j++;
+         k++;
+    }
+
+    for( k = 0; k < result.length;k++){
+        arr[si + k] = result[k];
+    }
+
+
+}
+public int[] sortArray(int[] nums) {
+    int sr = 0;
+    int ei = nums.length -1;
+    MergeSort(nums, sr,ei);
+    return nums;
+    
+}
+        }
+        
+
