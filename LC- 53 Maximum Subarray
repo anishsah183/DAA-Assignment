@@ -1,0 +1,25 @@
+class Solution {
+    public int maxSubArray(int[] nums) {
+        int currSum = 0;
+        int maxSum = Integer.MIN_VALUE;
+        int maxElement = Integer.MIN_VALUE;
+
+        for(int num : nums){
+            maxElement = Math.max(maxElement, num);
+            currSum += num;
+
+            if(currSum < 0){
+                currSum = 0;
+
+            }
+
+            maxSum = Math.max(maxSum,currSum);
+        }
+
+        if(maxElement < 0){
+            return maxElement;
+        }
+
+        return maxSum;
+    }
+}
